@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>02324_F2020_lektion_10_to_lektion_12</groupId>
+<artifactId>02324_F2020_lektion_10_to_lektion_12</artifactId>
+<packaging>pom</packaging>
+<version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>10_1_lektion_10</module>
+        <module>10_2_lektion_10</module>
+    </modules>
+    <!--tilføj <modules> <module</module> </modules> her -->
+<dependencies>
+    <!--        <dependency>-->
+    <!--            <groupId>javax.ws.rs</groupId>-->
+    <!--            <artifactId>javax.ws.rs-api</artifactId>-->
+    <!--            <version>2.0.1</version>-->
+    <!--        </dependency>-->
+    <dependency>
+        <groupId>org.glassfish.jersey.containers</groupId>
+        <artifactId>jersey-container-servlet</artifactId>
+        <version>2.25</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.glassfish.jersey.media</groupId>
+        <artifactId>jersey-media-json-jackson</artifactId>
+        <version>2.25</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.0-b01</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.40</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.glassfish.jersey.media</groupId>
+        <artifactId>jersey-media-multipart</artifactId>
+        <version>2.25</version>
+    </dependency>
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20180130</version>
+    </dependency>
+    <!--        De er tilføjet -->
+    <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.2.11</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>1.1.1</version>
+    </dependency>
+
+</dependencies>
+
+</project>
