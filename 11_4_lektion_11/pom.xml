@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>11_3_lektion_11</artifactId>
+    <artifactId>11_4_lektion_11</artifactId>
     <packaging>pom</packaging>
     <build>
         <sourceDirectory>src</sourceDirectory>
