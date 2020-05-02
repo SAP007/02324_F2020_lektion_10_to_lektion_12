@@ -9,9 +9,9 @@
             // før click handlers håndteres
             $('#hellobutton').click(function() { //Sætter en click handler på knappen
                 $.ajax({				 //Indleder et asynkront ajax kald
-                    url : 'rest/hello',	 //specificerer endpointet
-                    type : 'POST', // //Typen af HTTP requestet POST
-                    data : $('#getName').val(),
+                    url : 'rest/hello/getname',	 //specificerer endpointet
+                    type : 'POST', //Typen af HTTP requestet (GET er default)
+                   data : $('#felt').val(),
                     contentType: 'text/plain',
                     success : function(data){//Funktion der skal udføres når data er hentet
                         $('#mydiv').html(data); //Manipulerer #mydiv.
@@ -23,13 +23,8 @@
     </script>
 </head>
 <body>
-
-<form>
-    <input type="text" id="getName">
-</form>
-
+<input type="text" id="felt">
 <button id="hellobutton">Hello</button>
-<div id="mydiv">Tryk på  for at skifte teksten</div>
-
+<div id="mydiv">Tryk på knappen for at skifte teksten</div>
 </body>
 </html>
