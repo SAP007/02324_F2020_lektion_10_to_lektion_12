@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script>
+        $(function() { // Sikrer sig at dokumentet er indlæst,
+            // før click handlers håndteres
+            $('#submitbutton').click(function() { //Sætter en click handler på knappen
+                var id = $("#idform").val();
+                var name = $("#nameform").val();
+
+                var data = {id: id, name: name};
+
+                $.ajax({				 //Indleder et asynkront ajax kald
+                    url : 'rest/todo/form',	 //specificerer endpointet
+                    type : 'POST', // //Typen af HTTP requestet POST
+                    data: {
+                        param: $.param(data)
+                    },
+                    contentType: 'text/plain',
+                    success : function(data){//Funktion der skal udføres når data er hentet
+                        alert(id + "," + name + " virker");
+                    }
+                });
+                return false; //for at undgå at knappen poster data (default behavior).
+            });
+        });
+    </script>
+</head>
+<body>
+<!--
+<form method="POST" action="rest/todo/form">
+    <input type="text" name="inputString">
+    <input type="text" name="inputId">
+    <input type="submit" name="submitButton">
+</form>
+-->
+<form method="POST" action="rest/todo/getfromid">
+    <input type="text" name="getid">
+    <input type="submit" name="getidButton">
+</form>
+
+<form>
+    <input type="text" id="idform">
+    <input type="text" id="nameform">
+</form>
+
+<input type="submit" id="submitbutton">
+
+
+</body>
+</html>

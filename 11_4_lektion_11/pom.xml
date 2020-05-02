@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>11_4_lektion_11</artifactId>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
     <build>
         <sourceDirectory>src</sourceDirectory>
         <plugins>
@@ -31,9 +31,6 @@
             </plugin>
         </plugins>
     </build>
-    <modules>
-        <module>11_4_lektion_11</module>
-    </modules>
 
 </project>
 
