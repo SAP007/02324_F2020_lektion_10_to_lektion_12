@@ -4,14 +4,18 @@ import main.java.data.TodoDAO;
 import main.java.data.TodoDTO;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("todo")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class TodoService {
 
     @GET
-    public String getTodoList() {
+    public List<TodoDTO> getTodoList() {
         TodoDAO todo = TodoDAO.getInstance();
-        return todo.getListAsString();
+        return todo.getList();
 
     }
 
