@@ -10,21 +10,21 @@
             $('#submitbutton').click(function() { //Sætter en click handler på knappen
                 var id = $("#idform").val();
                 var name = $("#nameform").val();
-
-                var data = {id: id, name: name};
-
-                $.ajax({				 //Indleder et asynkront ajax kald
-                    url : 'rest/todo/form',	 //specificerer endpointet
-                    type : 'POST', // //Typen af HTTP requestet POST
-                    data: {
-                        param: $.param(data)
-                    },
-                    contentType: 'text/plain',
-                    success : function(data){//Funktion der skal udføres når data er hentet
-                        alert(id + "," + name + " virker");
-                    }
+                var dataObject = JSON.stringify({
+                    id: $("#idform").val(),
+                    name: $("#nameform").val()
                 });
-                return false; //for at undgå at knappen poster data (default behavior).
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "rest/todo/form",
+                    contentType: "application/json; charset=utf-8",
+                    //data: {id: id , name: name},
+                    data : dataObject,
+                    dataType: "json"
+                });
+                return true;
             });
         });
     </script>
