@@ -2,6 +2,7 @@ package main.java.rest;
 
 import main.java.data.TodoDAO;
 import main.java.data.TodoDTO;
+import org.json.JSONObject;
 
 import javax.ws.rs.*;
 
@@ -29,14 +30,14 @@ public class TodoService {
 
 
     @POST
-    @Path("/form")
-    public String addTodo(@FormParam("id") String idString, @FormParam("name") String input)
+    @Path("form")
+    public String addTodo(String obj)
     {
-        int id = Integer.parseInt(idString);
+        JSONObject jsonObject = new JSONObject(obj);
+        int id = jsonObject.getInt("id");
+        String name = jsonObject.getString("name");
 
-        System.out.println("inde: " + idString + ", " + input);
-
-        TodoDTO ingredient = new TodoDTO(id, input);
+        TodoDTO ingredient = new TodoDTO(id, name);
         TodoDAO.getInstance().addElement(ingredient);
 
         return TodoDAO.getInstance().getListAsString();
