@@ -12,9 +12,12 @@
 
 <h1>Indkøbsliste</h1>
 
-<input type="text" id="id" name="id" placeholder="id">
-<input type="text" id="add_item" name="tilføj" placeholder="tilføj varer">
-<button type="button" id="updateKnap" >tilføj</button>
+<form id="createTodoForm">
+    <input type="number" id="id" name="id" placeholder="id">
+    <input type="text" id="add_item" name="tilføj" placeholder="tilføj varer">
+    <button type="button" id="updateKnap" onclick="createTodoElement();"> tilføj </button>
+</form>
+
 
     <ol id="modify_list">
 

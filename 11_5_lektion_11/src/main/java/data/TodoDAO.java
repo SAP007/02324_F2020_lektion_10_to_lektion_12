@@ -42,6 +42,15 @@ public class TodoDAO {
         return list;
     }
 
+    public void remove(int id) throws InterruptedException {
+        for (TodoDTO todo : list) {
+            if (id == todo.getId()) {
+                list.remove(todo);
+                return;
+            }
+        }
+    }
+
     public String getListAsString() {
         String totalString = "";
 
