@@ -38,6 +38,14 @@ public class TodoDAO {
         list.add(elem);
     }
 
+    public boolean isDuplicate(int id) {
+        for (TodoDTO todo : list) {
+            if (todo.getId() == id)
+                return true;
+        }
+        return false;
+    }
+
     public List<TodoDTO> getList() {
         return list;
     }

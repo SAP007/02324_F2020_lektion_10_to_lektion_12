@@ -23,10 +23,13 @@ function createTodoElement(){
         url: 'rest/todo/form',
         method: 'POST',
         contentType: "application/json",
+        dataType : "text",
         data : data,
         success: function (data) {
-            alert(JSON.stringify(data));
+            alert((data));
             loadList();
+
+         $('form[name="createTodoFrom"]')[0].reset();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR.responseText);
@@ -37,8 +40,8 @@ function createTodoElement(){
 function createTodoHTML(todoElem) {
     var id = todoElem.id;
     var name = todoElem.todo;
-   return '<li>'+ id +"     "+  name + '</li>' + '<button onclick="deleteTodo(' + id + ');">slet</button>';
-
+   return  ' <li>' + '<div id="todoCon">'+ id +"  "+  name  + '<button class="btn" id="deleteBtn" onclick="deleteTodo(' + id + ');"> slet </button>' +
+       '<input type="checkbox" value="completed">' + '</li>' + '</div>' ;
 }
 
 function loadList() {

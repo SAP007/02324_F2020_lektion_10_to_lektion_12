@@ -39,18 +39,21 @@ public class TodoService {
 
     @POST
     @Path("form")
-    public List<TodoDTO> addTodo(String obj)
+    public String addTodo(String obj)
     {
         JSONObject jsonObject = new JSONObject(obj);
         int id = jsonObject.getInt("id");
         String todo = jsonObject.getString("todo");
 
         TodoDTO ingredient = new TodoDTO(id, todo);
-        TodoDAO.getInstance().addElement(ingredient);
-        TodoDAO todoResult = TodoDAO.getInstance();
 
+        if (!TodoDAO.getInstance().isDuplicate(id)) {
+            TodoDAO.getInstance().addElement(ingredient);
+            return "Todo added";
+        }
 
-        return todoResult.getList();
+        return "Not added Todo!";
+
     }
 
     @POST
