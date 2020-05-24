@@ -42,13 +42,26 @@ public class TodoDAO {
         return list;
     }
 
-    public void remove(int id) throws InterruptedException {
+    public void remove(int id) {
         for (TodoDTO todo : list) {
             if (id == todo.getId()) {
                 list.remove(todo);
                 return;
             }
         }
+    }
+
+
+    public String updateTodo(int id, String name) {
+        for (TodoDTO curr : list) {
+
+            if (curr.getId() == id) {
+                curr.setTodo(name);
+                return "Element med id "+ id + " opdateret";
+            }
+
+        }
+        return "ID eksisterer ikke i listen";
     }
 
     public String getListAsString() {

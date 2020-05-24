@@ -34,6 +34,21 @@ function createTodoElement(){
     });
 }
 
+function  updateTodoElement() {
+    var id = $('#update_id').val();
+    var name = $('#update_name').val();
+    console.log("iiii: " + id + "; " + name);
+    $.ajax({
+        url: 'rest/todo/' + id + '/' + name,
+        method: 'PUT',
+        complete: function (data) {
+            loadList();
+        }
+    });
+
+
+}
+
 function createTodoHTML(todoElem) {
     var id = todoElem.id;
     var name = todoElem.todo;

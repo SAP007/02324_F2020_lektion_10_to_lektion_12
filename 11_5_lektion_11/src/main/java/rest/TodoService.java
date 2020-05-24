@@ -55,8 +55,6 @@ public class TodoService {
 
     @POST
     @Path("query")
-    /*Variablerne tages fra URL'en
-     * Eksempel på HTTP kald: POST localhost:8080/Lektion10/rest/ingredient/query?id=4&name=sukker&amount=45 */
     public String addIngredientQuery(@QueryParam("id") String id, @QueryParam("name") String name) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), name);
         TodoDAO.getInstance().addElement(todo);
@@ -66,8 +64,6 @@ public class TodoService {
 
     @POST
     @Path("{id}/{name}")
-    /*Variablerne tages fra URL'en
-     * Eksempel på HTTP kald: POST localhost:8080/Lektion10/rest/ingredient/4/sukker/45 */
     public String addIngredientPath(@PathParam("id") String id, @PathParam("name") String name) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), name);
         TodoDAO.getInstance().addElement(todo);
@@ -77,9 +73,19 @@ public class TodoService {
 
     @DELETE
     @Path("{id}")
-    public void deleteElement(@PathParam("id") String id) throws InterruptedException {
+    public void deleteElement(@PathParam("id") String id) {
         System.out.println("id iis = " + id);
         TodoDAO.getInstance().remove(Integer.parseInt(id));
+
+        return;
+
+    }
+
+    @PUT
+    @Path("{id}/{name}")
+    public void updateElement(@PathParam("id") int id, @PathParam("name") String name) {
+
+        TodoDAO.getInstance().updateTodo(id, name);
 
         return;
 
