@@ -12,6 +12,7 @@ public class TodoDAO {
 
         list = new ArrayList<TodoDTO>();
         list.add(new TodoDTO(1,"handel"));
+        list.add(new TodoDTO(5,"skole"));
 
 
     }
@@ -41,11 +42,26 @@ public class TodoDAO {
         return list;
     }
 
+    public void remove(int id) throws InterruptedException {
+        for (TodoDTO todo : list) {
+            if (id == todo.getId()) {
+                list.remove(todo);
+                return;
+            }
+        }
+    }
+
     public String getListAsString() {
         String totalString = "";
 
+        int len = list.size();
+        int i = 1;
         for (TodoDTO elem : list) {
             totalString = totalString + "{" + elem.getId() + "," + elem.getTodo() + "}";
+            i++;
+            if (i < len)
+                totalString += ",";
+
         }
 
         return "[" +totalString + "]";

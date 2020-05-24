@@ -2,16 +2,21 @@ package main.java.rest;
 
 import main.java.data.TodoDAO;
 import main.java.data.TodoDTO;
+import org.json.JSONObject;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("todo")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class TodoService {
 
     @GET
-    public String getTodoList() {
+    public List<TodoDTO> getTodoList() {
         TodoDAO todo = TodoDAO.getInstance();
-        return todo.getListAsString();
+        return todo.getList();
 
     }
 
@@ -33,17 +38,19 @@ public class TodoService {
 
 
     @POST
-    @Path("/form")
-    public String addTodo(@FormParam("id") String idString, @FormParam("name") String input)
+    @Path("form")
+    public List<TodoDTO> addTodo(String obj)
     {
-        int id = Integer.parseInt(idString);
+        JSONObject jsonObject = new JSONObject(obj);
+        int id = jsonObject.getInt("id");
+        String todo = jsonObject.getString("todo");
 
-        System.out.println("inde: " + idString + ", " + input);
-
-        TodoDTO ingredient = new TodoDTO(id, input);
+        TodoDTO ingredient = new TodoDTO(id, todo);
         TodoDAO.getInstance().addElement(ingredient);
+        TodoDAO todoResult = TodoDAO.getInstance();
 
-        return TodoDAO.getInstance().getListAsString();
+
+        return todoResult.getList();
     }
 
     @POST
@@ -66,6 +73,16 @@ public class TodoService {
         TodoDAO.getInstance().addElement(todo);
 
         return "Todo added";
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void deleteElement(@PathParam("id") String id) throws InterruptedException {
+        System.out.println("id iis = " + id);
+        TodoDAO.getInstance().remove(Integer.parseInt(id));
+
+        return;
+
     }
 
 }
