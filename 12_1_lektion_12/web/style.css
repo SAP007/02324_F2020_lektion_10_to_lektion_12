@@ -1,0 +1,43 @@
+body{
+    font-family: Arial;
+}
+
+h1{
+    align-content: center;
+}
+
+#updateKnap{
+    background-color: #4CAF50;
+    border: none
+}
+
+#updateKnap:hover{
+    background-color: #3e8e41;
+}
+
+#updateKnap:after{
+
+}
+
+#todoCon{
+    margin: 10px;
+}
+
+.btn{
+    border-radius: 8px;
+    padding: 5px 12px 5px 12px;
+    border: none;
+}
+#deleteBtn{
+    margin: 10px;
+    background-color: #d72a20;
+
+}
+
+#deleteBtn:hover{
+    background-color: #ae0e1a;
+}
+
+#deleteBtn:after{
+
+}
