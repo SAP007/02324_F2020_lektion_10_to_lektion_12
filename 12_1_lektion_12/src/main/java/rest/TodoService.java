@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("todo")
@@ -40,7 +41,7 @@ public class TodoService {
 
     @POST
     @Path("form")
-    public String addTodo(String obj)
+    public Response addTodo(String obj)
     {
         JSONObject jsonObject = new JSONObject(obj);
         int id = jsonObject.getInt("id");
@@ -50,10 +51,11 @@ public class TodoService {
 
         if (!TodoDAO.getInstance().isDuplicate(id)) {
             TodoDAO.getInstance().addElement(ingredient);
-            return "Todo added";
+            return Response.status(201).entity("Element oprettet").build();
         }
 
-        return "Not added Todo!";
+        return Response.status(400).entity("Element med id " + id +" findes allerede").build();
+
 
     }
 
