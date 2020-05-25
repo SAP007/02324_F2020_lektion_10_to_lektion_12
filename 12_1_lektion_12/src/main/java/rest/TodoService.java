@@ -1,7 +1,8 @@
-package main.java.rest;
+package rest;
 
-import main.java.data.TodoDAO;
-import main.java.data.TodoDTO;
+import data.TodoDAO;
+import data.TodoDTO;
+
 import org.json.JSONObject;
 
 import javax.ws.rs.*;

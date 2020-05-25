@@ -4,7 +4,6 @@ $(document).ready(function(){
 
 function deleteTodo(id){
     event.preventDefault();
-    console.log("id is " + id);
     $.ajax({
         url: 'rest/todo/' + id,
         method: 'DELETE',
@@ -40,7 +39,6 @@ function createTodoElement(){
 function  updateTodoElement() {
     var id = $('#update_id').val();
     var name = $('#update_name').val();
-    console.log("iiii: " + id + "; " + name);
     $.ajax({
         url: 'rest/todo/' + id + '/' + name,
         method: 'PUT',
@@ -48,8 +46,6 @@ function  updateTodoElement() {
             loadList();
         }
     });
-
-
 }
 
 function createTodoHTML(todoElem) {
@@ -60,15 +56,10 @@ function createTodoHTML(todoElem) {
 }
 
 function loadList() {
-    console.log("inside loadList")
     $.get("rest/todo", function(data,textStatus,req){
-
         $("#modify_list").empty();
-        console.log("data" + data);
         $.each(data, function(i, todo){
-            console.log(i + "," +  todo);
             $("#modify_list").append(createTodoHTML(todo));
         });
     });
-
 }
