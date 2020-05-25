@@ -39,7 +39,7 @@ public class TodoService {
 
     @POST
     @Path("form")
-    public List<TodoDTO> addTodo(String obj)
+    public String addTodo(String obj)
     {
         JSONObject jsonObject = new JSONObject(obj);
         int id = jsonObject.getInt("id");
@@ -50,7 +50,7 @@ public class TodoService {
         TodoDAO todoResult = TodoDAO.getInstance();
 
 
-        return todoResult.getList();
+        return "done";
     }
 
     @POST

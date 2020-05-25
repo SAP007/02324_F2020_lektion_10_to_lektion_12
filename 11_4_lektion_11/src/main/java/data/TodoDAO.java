@@ -49,7 +49,7 @@ public class TodoDAO {
             totalString = totalString + "{" + elem.getId() + "," + elem.getTodo() + "}";
         }
 
-        return "[" +totalString + "]";
+        return totalString;
     }
 
 }

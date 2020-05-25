@@ -23,10 +23,13 @@ function createTodoElement(){
         url: 'rest/todo/form',
         method: 'POST',
         contentType: "application/json",
+        dataType: "text",
         data : data,
-        success: function (data) {
-            alert(JSON.stringify(data));
+        success: function (resData) {
+            alert(" going to load" + resData );
+
             loadList();
+            alert("done loading");
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR.responseText);
