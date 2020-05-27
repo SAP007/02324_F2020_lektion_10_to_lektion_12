@@ -1,0 +1,14 @@
+$beforeUpdate = Invoke-RestMethod 'http://localhost:8080/10_3_lektion_10_war_exploded/rest/power' -Method Get -ContentType 'application/json'
+
+# Echo the response
+Write-Host $beforeUpdate
+
+# Initiate the Put request
+
+Invoke-RestMethod 'http://localhost:8080/10_3_lektion_10_war_exploded/rest/power/update/2/kaffepause' -Method Put
+
+$afterUpdate = Invoke-RestMethod 'http://localhost:8080/10_3_lektion_10_war_exploded/rest/power' -Method Get -ContentType 'application/json'
+
+# Echo the response
+Write-Host $afterUpdate
+
