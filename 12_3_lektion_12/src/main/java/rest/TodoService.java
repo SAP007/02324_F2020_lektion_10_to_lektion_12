@@ -1,8 +1,7 @@
-package rest;
+package main.java.rest;
 
-import data.TodoDAO;
-import data.TodoDTO;
-
+import main.java.data.TodoDAO;
+import main.java.data.TodoDTO;
 import org.json.JSONObject;
 
 import javax.ws.rs.*;
@@ -34,11 +33,14 @@ public class TodoService {
         return "Element with id: " + id + "does not exist";
     }
 
+    @POST
+    @Path("/getname")
+    public String getname(String name){return "hello " + name;}
+
 
     @POST
     @Path("form")
-    public Response addTodo(String obj)
-    {
+    public Response addTodo(String obj) throws InvalidIdException {
         JSONObject jsonObject = new JSONObject(obj);
         int id = jsonObject.getInt("id");
         String todo = jsonObject.getString("todo");
@@ -50,7 +52,8 @@ public class TodoService {
             return Response.status(201).entity("Element oprettet").build();
         }
 
-        return Response.status(400).entity("Element med id " + id +" findes allerede").build();
+        throw new InvalidIdException();
+
 
     }
 

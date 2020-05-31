@@ -31,8 +31,7 @@ function createTodoElement(){
          $('form[name="createTodoFrom"]')[0].reset();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            //alert(jqXHR.responseText);
-            alert("error");
+            alert(jqXHR.responseText + ", " + textStatus + ", " + errorThrown);
         }
     });
 }
