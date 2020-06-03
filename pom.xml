@@ -19,6 +19,7 @@
         <module>12_1_lektion_12</module>
         <module>12_2_lektion_12</module>
         <module>12_3_lektion_12</module>
+        <module>12_4_lektion_12</module>
     </modules>
     <!--tilføj <modules> <module</module> </modules> her -->
 <dependencies>
