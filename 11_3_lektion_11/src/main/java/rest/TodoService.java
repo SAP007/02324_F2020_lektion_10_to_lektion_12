@@ -79,19 +79,12 @@ public class TodoService {
     public void deleteElement(@PathParam("id") String id) {
         System.out.println("id iis = " + id);
         TodoDAO.getInstance().remove(Integer.parseInt(id));
-
         return;
-
     }
 
     @PUT
     @Path("{id}/{name}")
     public void updateElement(@PathParam("id") int id, @PathParam("name") String name) {
-
         TodoDAO.getInstance().updateTodo(id, name);
-
-        return;
-
     }
-
 }
