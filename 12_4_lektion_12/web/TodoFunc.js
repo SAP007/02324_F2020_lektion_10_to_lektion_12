@@ -16,7 +16,6 @@ function deleteTodo(id){
 
 function deleteWithId(){
     event.preventDefault();
-    alert("bliver kaldt");
     var id = $('#remove_item').val();
     $.ajax({
         url: 'rest/todo/' + id,
@@ -31,6 +30,7 @@ function deleteWithId(){
 function createTodoElement(){
     event.preventDefault();
     var id = $('#id').val();
+    //Simpelt eksempel på front-end fejlhåndtering
     if (!(id == parseInt(id, 10))) {
         alert("id skal være heltal");
         return;
