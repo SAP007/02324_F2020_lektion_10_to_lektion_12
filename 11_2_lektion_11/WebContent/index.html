@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello Test</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script>
+            $(function() {
+                $('#hellobutton').click(function() {
+                    $.ajax({
+                        url : 'rest/hello',
+                        type : 'GET',
+                        //data  i function(data) er svaret returneret fra serveren
+                        success : function(data){
+                            $('#mydiv').html(data);
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+    <button id="hellobutton">Hello</button>
+    <div id="mydiv">Tryk på knappen for at skifte teksten</div>
+    </body>
+    </html>
