@@ -8,9 +8,11 @@ import javax.ws.rs.*;
 
 @Path("todo")
 public class TodoService {
+
     @GET
     public String getTodoList() {
         TodoDAO todo = TodoDAO.getInstance();
         return todo.getListAsString();
     }
+    
 }
