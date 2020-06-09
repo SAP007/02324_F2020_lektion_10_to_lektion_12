@@ -41,6 +41,7 @@ public class TodoService {
 
     @POST
     @Path("query")
+    //http://localhost:8080/10_5_lektion_10_war_exploded/rest/todo/query?id=4&task=handle
     public String addTodoQuery(@QueryParam("id") String id, @QueryParam("task") String task) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
