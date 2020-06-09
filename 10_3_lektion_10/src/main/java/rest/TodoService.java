@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.HashMap;
 
 
-@Path("power")
-public class Service {
+@Path("todo")
+public class TodoService {
     private static int i = 4;
     //create map to store data in
     private static Map<Integer, String> map = new HashMap<>();
@@ -18,15 +18,15 @@ public class Service {
         map.put(3, "Sport");
     }
 
-
     @GET
     public String getMap(){
         return map.toString();
     }
 
     @POST
-    public String addName(String name){
-        map.put(i, name);
+    @Path("/add")
+    public String addName(String task){
+        map.put(i, task);
         System.out.println("id = " + i + "value = " + map.get(i));
         i++;
 
@@ -35,20 +35,19 @@ public class Service {
 
     @DELETE
     @Path("/delete/{id}")
-    public void deleteFromMap(@PathParam("id") int id){
+    public String deleteFromMap(@PathParam("id") int id){
         map.remove(id);
-        System.out.println(map.toString());
+        return "Element " + id + " deleted.";
     }
 
-
     @PUT
-    @Path("/update/{id}/{name}")
-    public String changeName(@PathParam("id") int id, @PathParam("name") String name){
+    @Path("/update/{id}/{task}")
+    public String changeName(@PathParam("id") int id, @PathParam("task") String task){
         if(map.containsKey(id)){
-            map.put(id, name);
-            return "updated name";
+            map.put(id, task);
+            return "updated task " + id;
         }
-            return "cannot update";
+            return "Element " + id + " does not exist";
     }
 }
 

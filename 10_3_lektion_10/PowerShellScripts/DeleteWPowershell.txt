@@ -1,0 +1,14 @@
+
+$beforeDelete = Invoke-RestMethod 'http://localhost:8080/10_3_lektion_10_war_exploded/rest/todo' -Method Get -ContentType 'application/json'
+
+# Echo the result before deletion
+Write-Host $beforeDelete
+
+# Initiate the DELETE request after endpoint specify the id to be removed
+#Invoke-WebRequest -Method DELETE -Uri 'http://localhost:8080/10_3_lektion_10_war_exploded/rest/power?id=$id'
+ Invoke-RestMethod 'http://localhost:8080/10_3_lektion_10_war_exploded/rest/todo/delete/2' -Method Delete
+
+$afterDelete = Invoke-RestMethod 'http://localhost:8080/10_3_lektion_10_war_exploded/rest/todo' -Method Get -ContentType 'application/json'
+
+# Echo the result after deletion
+Write-Host $afterDelete

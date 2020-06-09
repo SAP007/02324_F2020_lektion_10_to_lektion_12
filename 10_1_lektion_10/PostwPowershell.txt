@@ -1,9 +1,0 @@
-$name = "Kurt" | ConvertTo-Json
-
-#$age = 20 | ConvertTo-Json
-
-# Initiate the POST request including the headers and the JSON payload
-$response = Invoke-RestMethod 'http://localhost:8080/10_1_lektion_10_war_exploded/rest/hello' -Method Post -Body $name -ContentType 'application/json'
-
-# Echo the response
-Write-Host $response

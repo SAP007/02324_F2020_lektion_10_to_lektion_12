@@ -1,5 +1,0 @@
- # Initiate the GET request including the headers and the JSON payload
-$response = Invoke-RestMethod 'http://localhost:8080/10_1_lektion_10_war_exploded/rest/hello' -Method Get -ContentType 'application/json'
-
-# Echo the response
-Write-Host $response
