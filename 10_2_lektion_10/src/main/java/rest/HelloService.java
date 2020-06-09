@@ -11,5 +11,9 @@ public class HelloService {
     public String getHello(){
         return "hello";
     }
-}
 
+    @POST
+    public String sayHello(String name){
+        return "Hello " + name;
+    }
+}
