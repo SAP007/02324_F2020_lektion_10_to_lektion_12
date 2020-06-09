@@ -1,7 +1,7 @@
-package rest;
+package main.java.rest;
 
-import data.TodoDAO;
-import data.TodoDTO;
+import main.java.data.TodoDAO;
+import main.java.data.TodoDTO;
 
 import org.json.JSONObject;
 
@@ -56,7 +56,7 @@ public class TodoService {
 
     @POST
     @Path("query")
-    public String addIngredientQuery(@QueryParam("id") String id, @QueryParam("name") String name) {
+    public String addTodoQuery(@QueryParam("id") String id, @QueryParam("name") String name) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), name);
         TodoDAO.getInstance().addElement(todo);
 
@@ -65,7 +65,7 @@ public class TodoService {
 
     @POST
     @Path("{id}/{name}")
-    public String addIngredientPath(@PathParam("id") String id, @PathParam("name") String name) {
+    public String addTodoPath(@PathParam("id") String id, @PathParam("name") String name) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), name);
         TodoDAO.getInstance().addElement(todo);
 
