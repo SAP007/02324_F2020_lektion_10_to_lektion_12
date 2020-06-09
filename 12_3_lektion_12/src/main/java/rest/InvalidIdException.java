@@ -3,7 +3,7 @@ package main.java.rest;
 public class InvalidIdException extends Exception {
 
 
-    public InvalidIdException() {
-        super("Element medde dette id findes allerede");
+    public InvalidIdException(int id) {
+        super("Element med id " + id + " findes allerede");
     }
 }

@@ -52,7 +52,7 @@ public class TodoService {
             return Response.status(201).entity("Element oprettet").build();
         }
 
-        throw new InvalidIdException();
+        throw new InvalidIdException(id);
 
 
     }

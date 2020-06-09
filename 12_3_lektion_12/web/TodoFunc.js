@@ -15,6 +15,20 @@ function deleteTodo(id){
 }
 
 
+function deleteWithId(){
+    event.preventDefault();
+    var id = $('#remove_item').val();
+    $.ajax({
+        url: 'rest/todo/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        complete: function (data) {
+            loadList();
+        }
+    });
+}
+
+
 function createTodoElement(){
     event.preventDefault();
     var data = JSON.stringify( {id : $('#id').val(), todo : $('#add_item').val()});
