@@ -4,6 +4,6 @@ public class InvalidIdException extends Exception {
 
 
     public InvalidIdException() {
-        super("Element medde dette id findes allerede");
+        super("Element med dette id findes allerede");
     }
 }

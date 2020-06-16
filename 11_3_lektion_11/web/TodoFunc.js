@@ -15,6 +15,19 @@ function deleteTodo(id){
     });
 }
 
+function deleteWithId(){
+    event.preventDefault();
+    var id = $('#remove_item').val();
+    $.ajax({
+        url: 'rest/todo/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        complete: function (data) {
+            loadList();
+        }
+    });
+}
+
 
 function createTodoElement(){
     event.preventDefault();
@@ -59,7 +72,6 @@ function createTodoHTML(todoElem) {
 }
 
 function loadList() {
-    console.log("inside loadList")
     $.get("rest/todo", function(data,textStatus,req){
         $("#modify_list").empty();
         $.each(data, function(i, todo){

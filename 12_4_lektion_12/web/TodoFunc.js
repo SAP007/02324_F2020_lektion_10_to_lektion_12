@@ -16,7 +16,6 @@ function deleteTodo(id){
 
 function deleteWithId(){
     event.preventDefault();
-    alert("bliver kaldt");
     var id = $('#remove_item').val();
     $.ajax({
         url: 'rest/todo/' + id,

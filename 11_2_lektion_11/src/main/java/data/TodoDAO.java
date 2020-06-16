@@ -22,8 +22,7 @@ public class TodoDAO {
             instance = new TodoDAO();
         return instance;
     }
-
-    //debugging method
+    //debugging
     public String getTodoById(int id) {
         for (TodoDTO curr : list) {
 
@@ -61,16 +60,32 @@ public class TodoDAO {
     }
 
 
-    public String updateTodo(int id, String task) {
+    public String updateTodo(int id, String name) {
         for (TodoDTO curr : list) {
 
             if (curr.getId() == id) {
-                curr.setTodo(task);
+                curr.setTodo(name);
                 return "Element med id "+ id + " opdateret";
             }
 
         }
         return "ID eksisterer ikke i listen";
+    }
+
+    // debugging
+    public String getListAsString() {
+        String totalString = "";
+
+        int len = list.size();
+        int i = 1;
+        for (TodoDTO elem : list) {
+            totalString = totalString + "{" + elem.getId() + "," + elem.getTodo() + "}";
+            i++;
+            if (i < len)
+                totalString += ",";
+
+        }
+        return "[" +totalString + "]";
     }
 
 }

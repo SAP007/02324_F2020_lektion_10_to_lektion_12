@@ -10,6 +10,10 @@ public class TodoDTO {
         this.todo = todo;
     }
 
+    public void setTodo(String todo) {
+        this.todo = todo;
+    }
+
     public String getTodo() {
         return todo;
     }

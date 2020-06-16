@@ -18,7 +18,6 @@ public class TodoService {
     public List<TodoDTO> getTodoList() {
         TodoDAO todo = TodoDAO.getInstance();
         return todo.getList();
-
     }
 
 
@@ -32,10 +31,6 @@ public class TodoService {
         }
         return "Element with id: " + id + "does not exist";
     }
-
-    @POST
-    @Path("/getname")
-    public String getname(String name){return "hello " + name;}
 
 
     @POST
@@ -59,17 +54,17 @@ public class TodoService {
 
     @POST
     @Path("query")
-    public String addIngredientQuery(@QueryParam("id") String id, @QueryParam("name") String name) {
-        TodoDTO todo = new TodoDTO(Integer.parseInt(id), name);
+    public String addTodoQuery(@QueryParam("id") String id, @QueryParam("task") String task) {
+        TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
 
         return "Todo added";
     }
 
     @POST
-    @Path("{id}/{name}")
-    public String addIngredientPath(@PathParam("id") String id, @PathParam("name") String name) {
-        TodoDTO todo = new TodoDTO(Integer.parseInt(id), name);
+    @Path("{id}/{task}")
+    public String addTodoPath(@PathParam("id") String id, @PathParam("task") String task) {
+        TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
 
         return "Todo added";
@@ -78,21 +73,13 @@ public class TodoService {
     @DELETE
     @Path("{id}")
     public void deleteElement(@PathParam("id") String id) {
-        System.out.println("id iis = " + id);
         TodoDAO.getInstance().remove(Integer.parseInt(id));
-
-        return;
-
     }
 
     @PUT
-    @Path("{id}/{name}")
-    public void updateElement(@PathParam("id") int id, @PathParam("name") String name) {
-
-        TodoDAO.getInstance().updateTodo(id, name);
-
-        return;
-
+    @Path("{id}/{task}")
+    public void updateElement(@PathParam("id") int id, @PathParam("task") String task) {
+        TodoDAO.getInstance().updateTodo(id, task);
     }
 
 }

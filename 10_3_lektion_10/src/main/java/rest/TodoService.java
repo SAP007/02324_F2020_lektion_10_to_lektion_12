@@ -1,7 +1,6 @@
 package main.java.rest;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -13,6 +12,7 @@ public class TodoService {
     private static Map<Integer, String> map = new HashMap<>();
 
     static {
+        //dummy objekter
         map.put(1,"skole");
         map.put(2, "aftensmad");
         map.put(3, "Sport");
@@ -24,13 +24,13 @@ public class TodoService {
     }
 
     @POST
-    @Path("/add")
-    public String addName(String task){
+    @Path("/add/{task}")
+    public String addName(@PathParam("task") String task){
         map.put(i, task);
         System.out.println("id = " + i + "value = " + map.get(i));
         i++;
 
-        return "added";
+        return "added" + task;
     }
 
     @DELETE

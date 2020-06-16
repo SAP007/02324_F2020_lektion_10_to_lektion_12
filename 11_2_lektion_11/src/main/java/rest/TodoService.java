@@ -2,21 +2,25 @@ package main.java.rest;
 
 import main.java.data.TodoDAO;
 import main.java.data.TodoDTO;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import org.json.JSONObject;
+
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("todo")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class TodoService {
 
     @GET
-    public String getTodoList() {
+    public List<TodoDTO> getTodoList() {
         TodoDAO todo = TodoDAO.getInstance();
-        return todo.getListAsString();
+        return todo.getList();
     }
 
+
     @POST
-    @Path("/getfromid")
     public String getTodoFromId(@FormParam("getid") String id) {
         TodoDAO todo = TodoDAO.getInstance();
         for (TodoDTO elem : todo.getList()) {
@@ -28,20 +32,24 @@ public class TodoService {
     }
 
     @POST
-    @Path("/form")
-    public String addTodo(@FormParam("inputId") String idString, @FormParam("task") String task)
+    @Path("form")
+    public String addTodo(String obj)
     {
-        int id = Integer.parseInt(idString);
+        JSONObject jsonObject = new JSONObject(obj);
+        int id = jsonObject.getInt("id");
+        String todo = jsonObject.getString("todo");
 
-        TodoDTO ingredient = new TodoDTO(id, task);
-        TodoDAO.getInstance().addElement(ingredient);
+        TodoDTO ingredient = new TodoDTO(id, todo);
 
-        return TodoDAO.getInstance().getListAsString();
+        if (!TodoDAO.getInstance().isDuplicate(id)) {
+            TodoDAO.getInstance().addElement(ingredient);
+            return "Todo added";
+        }
+        return "Not added Todo!";
     }
 
     @POST
     @Path("query")
-    //http://localhost:8080/10_5_lektion_10_war_exploded/rest/todo/query?id=4&task=handle
     public String addTodoQuery(@QueryParam("id") String id, @QueryParam("task") String task) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
@@ -57,4 +65,15 @@ public class TodoService {
         return "Todo added";
     }
 
+    @DELETE
+    @Path("{id}")
+    public void deleteElement(@PathParam("id") String id) {
+        TodoDAO.getInstance().remove(Integer.parseInt(id));
+    }
+
+    @PUT
+    @Path("{id}/{task}")
+    public void updateElement(@PathParam("id") int id, @PathParam("task") String task) {
+        TodoDAO.getInstance().updateTodo(id, task);
+    }
 }

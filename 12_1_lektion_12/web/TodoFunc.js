@@ -14,7 +14,6 @@ function deleteTodo(id){
     });
 }
 
-
 function deleteWithId(){
     event.preventDefault();
     var id = $('#remove_item').val();

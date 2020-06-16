@@ -10,6 +10,8 @@ public class TodoDAO {
 
     public TodoDAO() {
         list = new ArrayList<TodoDTO>();
+
+        //dummy objekter til GET
         list.add(new TodoDTO(1,"Skole"));
         list.add(new TodoDTO(2,"Aftensmad"));
         list.add(new TodoDTO(3,"Sport"));
@@ -19,25 +21,6 @@ public class TodoDAO {
         if (instance == null)
             instance = new TodoDAO();
         return instance;
-    }
-
-    public String getTodoById(int id) {
-        for (TodoDTO curr : list) {
-
-            if (curr.getId() == id)
-                return curr.getTodo();
-
-        }
-
-        return "ID eksisterer ikke i listen";
-    }
-
-    public void addElement(TodoDTO elem) {
-        list.add(elem);
-    }
-
-    public List<TodoDTO> getList() {
-        return list;
     }
 
     public String getListAsString() {

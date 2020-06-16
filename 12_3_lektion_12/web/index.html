@@ -20,12 +20,12 @@
     <button class="btn" type="button" id="updateKnap" onclick="createTodoElement();"> tilføj </button>
 </form>
 
-    <ol id="modify_list">
-    </ol>
+    <ul id="modify_list">
+    </ul>
 
     <p>slet et element fra listen</p>
     <input type="text" id="remove_item" name="remove" placeholder="slet varer med nr">
-    <button class ="btn" type="button" id="sletKnap" value="Reset form">Fjern</button>
+    <button class ="btn" type="button" id="sletKnap" onclick="deleteWithId();" value="Reset form">Fjern</button>
 
 <form id ="updateElem">
     <input type="number" id="update_id" placeholder="id">

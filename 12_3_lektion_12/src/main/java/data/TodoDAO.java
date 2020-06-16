@@ -9,12 +9,9 @@ public class TodoDAO {
     private List<TodoDTO> list;
 
     public TodoDAO() {
-
         list = new ArrayList<TodoDTO>();
         list.add(new TodoDTO(1,"handel"));
         list.add(new TodoDTO(5,"skole"));
-
-
     }
 
     public static TodoDAO getInstance() {
@@ -60,11 +57,11 @@ public class TodoDAO {
     }
 
 
-    public String updateTodo(int id, String name) {
+    public String updateTodo(int id, String task) {
         for (TodoDTO curr : list) {
 
             if (curr.getId() == id) {
-                curr.setTodo(name);
+                curr.setTodo(task);
                 return "Element med id "+ id + " opdateret";
             }
 
@@ -72,6 +69,7 @@ public class TodoDAO {
         return "ID eksisterer ikke i listen";
     }
 
+    //debugging method
     public String getListAsString() {
         String totalString = "";
 

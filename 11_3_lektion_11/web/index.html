@@ -14,19 +14,23 @@
 
 <h1>TODO List</h1>
 
+<p>Test backend ved at tilføje en opgave til To Do listen. Indsæt id i form af heltal og titel som streng <br>
+    klik på submit for at tilføj til backend collection</p>
+
 <form id="createTodoForm" name="createTodoFrom">
     <input type="number" id="id" name="id" placeholder="id">
     <input type="text" id="add_item" name="tilføj" placeholder="tilføj varer">
     <button class="btn" type="button" id="updateKnap" onclick="createTodoElement();"> tilføj </button>
 </form>
 
-    <ol id="modify_list">
-    </ol>
+    <ul id="modify_list">
+    </ul>
 
     <p>slet et element fra listen</p>
     <input type="text" id="remove_item" name="remove" placeholder="slet varer med nr">
-    <button class ="btn" type="button" id="sletKnap" value="Reset form">Fjern</button>
+    <button class ="btn" type="button" id="sletKnap" onclick="deleteWithId();" value="Reset form">Fjern</button>
 
+<p>Indtast et Id hvor den tilhørende titel på opgaven skal ændres</p>
 <form id ="updateElem">
     <input type="number" id="update_id" placeholder="id">
     <input type="text" id="update_name" placeholder="Ny værdi">

@@ -22,6 +22,7 @@ public class TodoDAO {
         return instance;
     }
 
+    //debugging
     public String getTodoById(int id) {
         for (TodoDTO curr : list) {
 

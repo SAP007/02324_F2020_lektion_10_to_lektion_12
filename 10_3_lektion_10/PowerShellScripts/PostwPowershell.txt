@@ -1,6 +1,6 @@
 
 # Initiate the POST request including the headers and the JSON payload
-$response = Invoke-RestMethod 'http://localhost:8080/10_1_lektion_10_war_exploded/rest/todo/add/ajax' -Method Post -Body $name -ContentType 'application/json'
+$response = Invoke-RestMethod -Uri 'http://localhost:8080/10_3_lektion_10_war_exploded/rest/todo/add/ajax' -Method Post  -ContentType 'application/json'
 
 # Echo the response
 Write-Host $response

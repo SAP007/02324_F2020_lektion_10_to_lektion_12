@@ -15,6 +15,19 @@ function deleteTodo(id){
 }
 
 
+function deleteWithId(){
+    event.preventDefault();
+    var id = $('#remove_item').val();
+    $.ajax({
+        url: 'rest/todo/' + id,
+        method: 'DELETE',
+        contentType: 'application/json',
+        complete: function (data) {
+            loadList();
+        }
+    });
+}
+
 function createTodoElement(){
     event.preventDefault();
     var data = JSON.stringify( {id : $('#id').val(), todo : $('#add_item').val()});
@@ -50,8 +63,8 @@ function  updateTodoElement() {
 
 function createTodoHTML(todoElem) {
     var id = todoElem.id;
-    var name = todoElem.todo;
-   return  ' <li>' + '<div id="todoCon">'+ id +"  "+  name  + '<button class="btn" id="deleteBtn" onclick="deleteTodo(' + id + ');"> slet </button>' +
+    var task = todoElem.todo;
+   return  ' <li>' + '<div id="todoCon">'+ id +"  "+  task  + '<button class="btn" id="deleteBtn" onclick="deleteTodo(' + id + ');"> slet </button>' +
        '<input type="checkbox" value="completed">' + '</li>' + '</div>' ;
 }
 
