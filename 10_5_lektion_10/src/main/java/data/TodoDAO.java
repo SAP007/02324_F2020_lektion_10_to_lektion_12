@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TodoDAO {
-
     private static TodoDAO instance;
     private List<TodoDTO> list;
 
     public TodoDAO() {
-
         list = new ArrayList<TodoDTO>();
 
         //dummy objekter
