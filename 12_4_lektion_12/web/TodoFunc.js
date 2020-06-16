@@ -30,6 +30,7 @@ function deleteWithId(){
 function createTodoElement(){
     event.preventDefault();
     var id = $('#id').val();
+    //Simpelt eksempel på front-end fejlhåndtering
     if (!(id == parseInt(id, 10))) {
         alert("id skal være heltal");
         return;
