@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TodoDAO {
-
     private static TodoDAO instance;
     private List<TodoDTO> list;
 
