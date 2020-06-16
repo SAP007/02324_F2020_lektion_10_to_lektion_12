@@ -15,6 +15,7 @@ import java.util.List;
 public class TodoService {
 
     @GET
+    //Henter hele todo listen
     public List<TodoDTO> getTodoList() {
         TodoDAO todo = TodoDAO.getInstance();
         return todo.getList();
@@ -35,6 +36,7 @@ public class TodoService {
 
     @POST
     @Path("form")
+    //Tilføjer todo element
     public Response addTodo(String obj) throws InvalidIdException {
         JSONObject jsonObject = new JSONObject(obj);
         int id = jsonObject.getInt("id");
@@ -44,15 +46,17 @@ public class TodoService {
 
         if (!TodoDAO.getInstance().isDuplicate(id)) {
             TodoDAO.getInstance().addElement(ingredient);
+            //returnerer success response, hvis objektet tilføjes
             return Response.status(201).entity("Element oprettet").build();
         }
-
+        //kaster exception, hvis id'eter i brug
         throw new InvalidIdException();
     }
 
 
     @POST
     @Path("query")
+    //Tilføjer to do element med QueryParam
     public String addTodoQuery(@QueryParam("id") String id, @QueryParam("task") String task) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
@@ -62,6 +66,7 @@ public class TodoService {
 
     @POST
     @Path("{id}/{task}")
+    //Tilføjer to do element med PathParam
     public String addTodoPath(@PathParam("id") String id, @PathParam("task") String task) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
@@ -71,6 +76,7 @@ public class TodoService {
 
     @DELETE
     @Path("{id}")
+    //Sletet to do element med PathParam, tager id fra url
     public void deleteElement(@PathParam("id") String id) {
         TodoDAO.getInstance().remove(Integer.parseInt(id));
     }
