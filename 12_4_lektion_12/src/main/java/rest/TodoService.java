@@ -15,7 +15,7 @@ import java.util.List;
 public class TodoService {
 
     @GET
-    //Henter hele todo listen
+    //Henter hele to do listen
     public List<TodoDTO> getTodoList() {
         TodoDAO todo = TodoDAO.getInstance();
         return todo.getList();
@@ -23,6 +23,7 @@ public class TodoService {
     }
 
     @POST
+    //henter to do  med id, ellers medeler at det ikke eksistere
     public String getTodoFromId(@FormParam("getid") String id) {
         TodoDAO todo = TodoDAO.getInstance();
         for (TodoDTO elem : todo.getList()) {
@@ -36,7 +37,7 @@ public class TodoService {
 
     @POST
     @Path("form")
-    //Tilføjer todo element
+    //Tilføjer to do element
     public Response addTodo(String obj) throws InvalidIdException {
         JSONObject jsonObject = new JSONObject(obj);
         int id = jsonObject.getInt("id");
@@ -83,9 +84,9 @@ public class TodoService {
 
     @PUT
     @Path("{id}/{task}")
+    // updatere en to do
     public void updateElement(@PathParam("id") int id, @PathParam("task") String task) {
         TodoDAO.getInstance().updateTodo(id, task);
-
     }
 
 }

@@ -10,10 +10,12 @@ public class TodoDAO {
 
     public TodoDAO() {
         list = new ArrayList<TodoDTO>();
+        //dummy objekter
         list.add(new TodoDTO(1,"handel"));
         list.add(new TodoDTO(5,"skole"));
     }
 
+    //henter statisk instance
     public static TodoDAO getInstance() {
         if (instance == null)
             instance = new TodoDAO();
@@ -29,10 +31,12 @@ public class TodoDAO {
         return "ID eksisterer ikke i listen";
     }
 
+    //tilføjer et element til listen
     public void addElement(TodoDTO elem) {
         list.add(elem);
     }
 
+    //tjekker om id findes i listen
     public boolean isDuplicate(int id) {
         for (TodoDTO todo : list) {
             if (todo.getId() == id)
@@ -41,10 +45,12 @@ public class TodoDAO {
         return false;
     }
 
+    //henter listen
     public List<TodoDTO> getList() {
         return list;
     }
 
+    //fjerner element med det givne id fra listen
     public void remove(int id) {
         for (TodoDTO todo : list) {
             if (id == todo.getId()) {
@@ -54,7 +60,7 @@ public class TodoDAO {
         }
     }
 
-
+    //Opdaterer task på elementet med det givne id
     public String updateTodo(int id, String name) {
         for (TodoDTO curr : list) {
 

@@ -38,6 +38,7 @@ public class TodoDAO {
         return "ID eksisterer ikke i listen";
     }
 
+    //tilføjer et element til listen
     public void addElement(TodoDTO elem) {
         list.add(elem);
     }
@@ -51,6 +52,7 @@ public class TodoDAO {
         return false;
     }
 
+    //henter listen
     public List<TodoDTO> getList() {
         return list;
     }

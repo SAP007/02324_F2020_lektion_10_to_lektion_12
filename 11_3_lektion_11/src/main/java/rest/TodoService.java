@@ -14,6 +14,7 @@ import java.util.List;
 public class TodoService {
 
     @GET
+    //Henter hele to do listen
     public List<TodoDTO> getTodoList() {
         TodoDAO todo = TodoDAO.getInstance();
         return todo.getList();
@@ -21,6 +22,7 @@ public class TodoService {
 
 
     @POST
+    //henter to do  med id, ellers medeler at det ikke eksistere
     public String getTodoFromId(@FormParam("getid") String id) {
         TodoDAO todo = TodoDAO.getInstance();
         for (TodoDTO elem : todo.getList()) {
@@ -33,6 +35,7 @@ public class TodoService {
 
     @POST
     @Path("form")
+    //Tilføjer to do element
     public String addTodo(String obj)
     {
         JSONObject jsonObject = new JSONObject(obj);
@@ -50,6 +53,7 @@ public class TodoService {
 
     @POST
     @Path("query")
+    //Tilføjer to do element med QueryParam
     public String addTodoQuery(@QueryParam("id") String id, @QueryParam("task") String task) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
@@ -58,6 +62,7 @@ public class TodoService {
 
     @POST
     @Path("{id}/{task}")
+    //Tilføjer to do element med PathParam
     public String addTodoPath(@PathParam("id") String id, @PathParam("task") String task) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
@@ -66,12 +71,14 @@ public class TodoService {
 
     @DELETE
     @Path("{id}")
+    //Sletet to do element med PathParam, tager id fra url
     public void deleteElement(@PathParam("id") String id) {
         TodoDAO.getInstance().remove(Integer.parseInt(id));
     }
 
     @PUT
     @Path("{id}/{name}")
+    // updatere en to do
     public void updateElement(@PathParam("id") int id, @PathParam("name") String name) {
         TodoDAO.getInstance().updateTodo(id, name);
     }

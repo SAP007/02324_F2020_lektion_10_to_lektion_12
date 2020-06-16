@@ -2,6 +2,7 @@ $(document).ready(function(){
     loadList();
 });
 
+//onclick funktion til individuelle to do elementer
 function deleteTodo(id){
     event.preventDefault();
     console.log("id is " + id);
@@ -14,7 +15,7 @@ function deleteTodo(id){
         }
     });
 }
-
+//Sletter element givet id
 function deleteWithId(){
     event.preventDefault();
     var id = $('#remove_item').val();
@@ -28,7 +29,7 @@ function deleteWithId(){
     });
 }
 
-
+//Opretter nyt to do element
 function createTodoElement(){
     event.preventDefault();
     var data = JSON.stringify( {id : $('#id').val(), todo : $('#add_item').val()});
@@ -49,7 +50,7 @@ function createTodoElement(){
         }
     });
 }
-
+//Opdaterer eksisterende elementer
 function  updateTodoElement() {
     var id = $('#update_id').val();
     var name = $('#update_name').val();
@@ -64,6 +65,7 @@ function  updateTodoElement() {
 
 }
 
+// Opretter HTML elementer til nye to do objekter
 function createTodoHTML(todoElem) {
     var id = todoElem.id;
     var name = todoElem.todo;
@@ -71,6 +73,7 @@ function createTodoHTML(todoElem) {
        '<input type="checkbox" value="completed">' + '</li>' + '</div>' ;
 }
 
+//Henter to do listen fra server, og displayer hvert element
 function loadList() {
     $.get("rest/todo", function(data,textStatus,req){
         $("#modify_list").empty();
