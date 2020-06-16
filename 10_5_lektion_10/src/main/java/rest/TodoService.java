@@ -17,6 +17,7 @@ public class TodoService {
 
     @POST
     @Path("/getfromid")
+    //henter to do  med id, ellers medeler at det ikke eksistere
     public String getTodoFromId(@FormParam("getid") String id) {
         TodoDAO todo = TodoDAO.getInstance();
         for (TodoDTO elem : todo.getList()) {
@@ -29,6 +30,7 @@ public class TodoService {
 
     @POST
     @Path("/form")
+    //Tilføjer to do element
     public String addTodo(@FormParam("inputId") String idString, @FormParam("task") String task)
     {
         int id = Integer.parseInt(idString);
@@ -41,6 +43,7 @@ public class TodoService {
 
     @POST
     @Path("query")
+    //Tilføjer to do element med QueryParam
     //http://localhost:8080/10_5_lektion_10_war_exploded/rest/todo/query?id=4&task=handle
     public String addTodoQuery(@QueryParam("id") String id, @QueryParam("task") String task) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
@@ -50,6 +53,7 @@ public class TodoService {
 
     @POST
     @Path("{id}/{task}")
+    //Tilføjer to do element med PathParam
     public String addTodoPath(@PathParam("id") String id, @PathParam("task") String task) {
         TodoDTO todo = new TodoDTO(Integer.parseInt(id), task);
         TodoDAO.getInstance().addElement(todo);
