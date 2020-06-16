@@ -11,11 +11,14 @@ public class TodoDAO {
     public TodoDAO() {
 
         list = new ArrayList<TodoDTO>();
+
+        //dummy objekter
         list.add(new TodoDTO(1,"Skole"));
         list.add(new TodoDTO(2,"Aftensmad"));
         list.add(new TodoDTO(3,"Sport"));
     }
 
+    //henter statisk instance
     public static TodoDAO getInstance() {
         if (instance == null)
             instance = new TodoDAO();
@@ -34,14 +37,17 @@ public class TodoDAO {
         return "ID eksisterer ikke i listen";
     }
 
+    //tilføjer et element til listen
     public void addElement(TodoDTO elem) {
         list.add(elem);
     }
 
+    //henter listen
     public List<TodoDTO> getList() {
         return list;
     }
 
+    // listen som en streng
     public String getListAsString() {
         String totalString = "";
 
